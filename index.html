@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 23rd Birthday Arshad 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+html { scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+  color:white;
+  overflow-x:hidden;
+  text-align:center;
+}
+
+.section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+}
+
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:48px;
+  text-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  background:white;
+  color:black;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+#countdown{
+  font-size:18px;
+  margin-top:10px;
+}
+
+/* Slideshow */
+.slideshow{
+  width:100%;
+  height:60vh;
+  position:relative;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.slide{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  position:absolute;
+  opacity:0;
+  transition:opacity 1.5s ease;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+/* Gallery */
+.gallery-scroll img{
+  max-width:90%;
+  border-radius:20px;
+  margin:20px 0;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Floating emojis */
+.float{
+  position:fixed;
+  font-size:22px;
+  animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-110vh);opacity:0;}
+}
+
+/* Confetti */
+.confetti{
+  position:fixed;
+  width:8px;
+  height:8px;
+  animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+  to{transform:translateY(100vh) rotate(720deg);opacity:0;}
+}
+
+/* Glow */
+.glow{
+  position:fixed;
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  border-radius:50%;
+  animation:burst 1s ease forwards;
+}
+
+@keyframes burst{
+  from{transform:scale(0);opacity:1;}
+  to{transform:scale(3);opacity:0;}
+}
+
+/* Final */
+#finalLove{
+  display:none;
+  font-size:80px;
+  margin-top:40px;
+  font-family:'Great Vibes',cursive;
+  text-shadow:0 0 30px rgba(255,0,150,0.9);
+}
+</style>
+</head>
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<!-- INTRO -->
+<div class="section" id="intro">
+  <h1>Happy 23rd Birthday Arshad 🎉</h1>
+  <div id="countdown"></div>
+  <button onclick="start()">Begin 🔥</button>
+</div>
+
+<!-- STORY -->
+<div class="section" id="story" style="display:none;">
+  <h1>5 April 2003</h1>
+  <p>A legend was born 😎</p>
+
+  <h1 style="margin-top:30px;">Since Then...</h1>
+  <p>
+  Life has been chaos, fun, madness and memories…  
+  but one thing stayed constant — our friendship 🤝  
+  </p>
+
+  <button onclick="showSlideshow()">Continue 🔥</button>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="section" id="slideshowSection" style="display:none;">
+  <h1>Our Moments 💫</h1>
+
+  <div class="slideshow">
+    <img src="img1.jpg" class="slide active">
+    <img src="img2.jpg" class="slide">
+    <img src="img3.jpg" class="slide">
+    <img src="img4.jpg" class="slide">
+    <img src="img5.jpg" class="slide">
+    <img src="img6.jpg" class="slide">
+    <img src="img7.jpg" class="slide">
+    <img src="img8.jpg" class="slide">
+    <img src="img9.jpg" class="slide">
+  </div>
+
+  <button onclick="showScrollGallery()">See All 📸</button>
+</div>
+
+<!-- GALLERY -->
+<div class="section gallery-scroll" id="scrollGallery" style="display:none;">
+  <h1>Memories 📸</h1>
+
+  <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg">
+  <img src="img4.jpg"><img src="img5.jpg"><img src="img6.jpg">
+  <img src="img7.jpg"><img src="img8.jpg"><img src="img9.jpg">
+
+  <button onclick="showVideos()">Videos 🎥</button>
+</div>
+
+<!-- VIDEOS -->
+<div class="section" id="videos" style="display:none;">
+  <h1>Crazy Moments 🎥</h1>
+
+  <video autoplay muted loop playsinline width="90%">
+    <source src="video1.mp4">
+  </video>
+
+  <video autoplay muted loop playsinline width="90%">
+    <source src="video2.mp4">
+  </video>
+
+  <video autoplay muted loop playsinline width="90%">
+    <source src="video3.mp4">
+  </video>
+
+  <button onclick="showCake()">Celebrate 🎂</button>
+</div>
+
+<!-- CAKE -->
+<div class="section" id="cakeSection" style="display:none;">
+  <h1>Time to Celebrate Brother 🎂🔥</h1>
+
+  <div style="font-size:100px;cursor:pointer;" onclick="celebrate()">🎂</div>
+
+  <p>Tap the cake and let’s go crazy 🎂🔥</p>
+</div>
+
+<!-- WISH -->
+<div class="section" id="wishPage" style="display:none;">
+  <h1>Happy Birthday Arshad 🎉</h1>
+  <p>
+  No matter what happens…  
+  Brotherhood stays forever 🤝🔥  
+  </p>
+  <button onclick="showQuestion()">Last Thing 😏</button>
+</div>
+
+<!-- QUESTION -->
+<div class="section" id="questionPage" style="display:none;">
+  <h1>One Last Thing 😏</h1>
+  <p>Will you always stay my brother?</p>
+
+  <button onclick="answer('yes')">Always 🔥</button>
+  <button onclick="answer('no')">Pagal hai kya 😂</button>
+
+  <div id="response"></div>
+  <h1 id="finalLove">Bhai ❤️🔥</h1>
+</div>
+
+<script>
+
+function goTop(){ window.scrollTo({top:0,behavior:"smooth"}); }
+
+/* Countdown */
+setInterval(()=>{
+let d=new Date("Apr 5, 2026").getTime();
+let n=new Date().getTime();
+let diff=d-n;
+let days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("countdown").innerHTML=days+" days left";
+},1000);
+
+/* Floating */
+setInterval(()=>{
+let f=document.createElement("div");
+f.className="float";
+f.innerHTML="🔥";
+f.style.left=Math.random()*100+"vw";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),6000);
+},800);
+
+/* Slideshow */
+let i=0,s=document.querySelectorAll(".slide"),interval;
+
+function start(){
+document.getElementById("bgMusic").play().catch(()=>{});
+document.getElementById("intro").style.display="none";
+document.getElementById("story").style.display="flex";
+goTop();
+}
+
+function showSlideshow(){
+document.getElementById("story").style.display="none";
+document.getElementById("slideshowSection").style.display="flex";
+goTop();
+
+interval=setInterval(()=>{
+s[i].classList.remove("active");
+i=(i+1)%s.length;
+s[i].classList.add("active");
+},2500);
+}
+
+function showScrollGallery(){clearInterval(interval);document.getElementById("slideshowSection").style.display="none";document.getElementById("scrollGallery").style.display="flex";goTop();}
+function showVideos(){document.getElementById("scrollGallery").style.display="none";document.getElementById("videos").style.display="flex";goTop();}
+function showCake(){document.getElementById("videos").style.display="none";document.getElementById("cakeSection").style.display="flex";goTop();}
+
+function celebrate(){
+document.getElementById("cakeSection").style.display="none";
+document.getElementById("wishPage").style.display="flex";
+goTop();
+
+for(let j=0;j<60;j++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background="hsl("+Math.random()*360+",100%,50%)";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+}
+}
+
+function showQuestion(){
+document.getElementById("wishPage").style.display="none";
+document.getElementById("questionPage").style.display="flex";
+goTop();
+}
+
+function answer(choice){
+let value=choice==="yes"?"yes":"No";
+
+fetch("https://docs.google.com/forms/d/e/1FAIpQLSfE4fJvHVCWE32mtqFIKug-mIayunvliewWqKl-fcSMIVCDJA/formResponse",{
+method:"POST",
+mode:"no-cors",
+headers:{"Content-Type":"application/x-www-form-urlencoded"},
+body:"entry.1790475555="+encodeURIComponent(value)
+});
+
+document.getElementById("response").innerHTML="Legend always 🤝🔥";
+document.getElementById("finalLove").style.display="block";
+goTop();
+}
+
+</script>
+
+</body>
+</html>
